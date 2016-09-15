@@ -1,7 +1,7 @@
 **Instructions for SSH access to the instance**
 -----------------------------------------------
-**Public IP Address:** ```54.70.59.85```
-**AWS URL:** ```http://ec2-54-68-216-109.us-west-2.compute.amazonaws.com/```
+**Public IP Address:** ```54.70.146.8```
+**AWS URL:** ```http://ec2-54-70-146-8.us-west-2.compute.amazonaws.com/```
 **Project used:** ```https://github.com/LeilaniAnn/catalog/tree/project ```
 **Download Private Key**
 *Move the private key file into the folder ~/.ssh (where ~ is your environment's home directory). So if you downloaded the file to the Downloads folder, just execute the following command in your terminal.*
@@ -133,13 +133,16 @@
 **Create database user**
 
 > ```sudo su -postgres```
-> 
-> ```psql```
-> 
-> <code>CREATE USER catalog WITH PASSWORD 'secure_password';</code>
-> ```GRANT SELECT, INSERT, DELETE, UPDATE ON ALL TABLES IN SCHEMA public TO catalog;```
-> ```\q```
-> ```exit```
+>
+> psql
+>
+> CREATE USER catalog WITH PASSWORD 'secure_password';
+>
+> GRANT SELECT, INSERT, DELETE, UPDATE ON ALL TABLES IN SCHEMA public TO catalog;
+>
+> \q
+>
+> exit
 
 **Configure application**
 
@@ -171,12 +174,13 @@
 ```sudo cp /var/www/catalog.conf /etc/apache2/sites-available```
 
 ``` cd catalog```
+
 ```sudo nano catalog.wsgi``` 
 
 **copy and paste the following into catalog.wsgi:**
 
 ```
-!/usr/bin/python
+#!/usr/bin/python
 import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
@@ -192,7 +196,7 @@ application.secret_key = 'super_secret_key'
 
 **Start serving app.**
 
-```Service apache2 reload```
+```service apache2 reload```
 
 ```sudo a2ensite catalog```
 
