@@ -136,7 +136,7 @@
 > 
 > ```psql```
 > 
-> ```CREATE USER catalog WITH PASSWORD 'secure_password';```
+> <code>CREATE USER catalog WITH PASSWORD 'secure_password';</code>
 > ```GRANT SELECT, INSERT, DELETE, UPDATE ON ALL TABLES IN SCHEMA public TO catalog;```
 > ```\q```
 > ```exit```
@@ -168,8 +168,9 @@
 </VirtualHost>
 ```
 
-```sudo cp /var/www/catalog/catalog.conf /etc/apache2/sites-available```
+```sudo cp /var/www/catalog.conf /etc/apache2/sites-available```
 
+``` cd catalog```
 ```sudo nano catalog.wsgi``` 
 
 **copy and paste the following into catalog.wsgi:**
